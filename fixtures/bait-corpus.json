@@ -1,0 +1,92 @@
+[
+  {
+    "id": "tech-chip",
+    "goal": "I want to know recent tech development",
+    "sources": [
+      {
+        "title": "BREAKING: Apple SHOCKS the world with a new M5 chip that DESTROYS Qualcomm!!",
+        "text": "You won't believe the benchmarks. Apple announced an M5 chip for a MacBook Pro refresh. Independent tests posted 18 percent faster CPU scores than the M4. Sponsored: Buy the SuperFan case with code HYPE20. 🔥🔥🔥",
+        "url": "https://example.test/apple-m5?utm_campaign=hype",
+        "outlet": "Example Tech"
+      },
+      {
+        "title": "Shop now: this cooling pad will CHANGE YOUR LIFE",
+        "text": "Limited time offer. Use code CHILL50. Affiliate link below. Click here.",
+        "url": "https://example.test/ad-pad",
+        "outlet": "Ad Network"
+      }
+    ],
+    "must_keep": ["apple", "m5", "chip", "18"],
+    "must_drop": ["breaking", "shocks", "destroys", "you won't believe", "sponsored", "hype20", "shop now", "limited time"]
+  },
+  {
+    "id": "world-vote",
+    "goal": "What happened in world news this week",
+    "sources": [
+      {
+        "title": "NIGHTMARE at the polls as chaos ERUPTS and the internet loses its mind",
+        "text": "Let that sink in. Officials in Kenya reported turnout of 64 percent in a local election on Tuesday. Results are expected Thursday. Everyone is talking about it. This changes everything.",
+        "url": "https://example.test/kenya-election",
+        "outlet": "Example Wire"
+      }
+    ],
+    "must_keep": ["kenya", "64", "tuesday", "thursday"],
+    "must_drop": ["nightmare", "chaos", "erupts", "let that sink in", "this changes everything", "everyone is talking"]
+  },
+  {
+    "id": "wellness-ad",
+    "goal": "Health research I should actually know",
+    "sources": [
+      {
+        "title": "Doctors HATE this. You should be TERRIFIED of your morning coffee.",
+        "text": "A journal study of 1,200 adults found no significant change in resting heart rate after two cups of coffee. Paid partnership with NightShade Drops. Shop now and use code PANIC15. Literally shaking.",
+        "url": "https://example.test/coffee-study",
+        "outlet": "Wellness Feed"
+      }
+    ],
+    "must_keep": ["1,200", "coffee", "heart rate"],
+    "must_drop": ["hate", "terrified", "paid partnership", "shop now", "panic15", "literally shaking"]
+  },
+  {
+    "id": "friends-public",
+    "goal": "How are my friends doing",
+    "sources": [
+      {
+        "title": "Maya Chen",
+        "text": "I'm screaming I got the research job in Toronto and I start in September!!! My heart is full. Also sponsored: SkillBoost courses link in bio.",
+        "url": "https://x.com/mayachen/status/1",
+        "outlet": "X"
+      }
+    ],
+    "must_keep": ["maya", "toronto", "september", "research"],
+    "must_drop": ["i'm screaming", "my heart is full", "sponsored", "link in bio"]
+  },
+  {
+    "id": "finance-fomo",
+    "goal": "What changed in public markets",
+    "sources": [
+      {
+        "title": "It's OVER. The market MELTS DOWN and you must act NOW.",
+        "text": "The S&P 500 closed down 0.6 percent. Download the app and buy this coin. Hurry. Only a few left. Unbelievable carnage.",
+        "url": "https://example.test/markets",
+        "outlet": "Desk"
+      }
+    ],
+    "must_keep": ["s&p", "0.6"],
+    "must_drop": ["it's over", "melts down", "act now", "download the app", "hurry", "unbelievable"]
+  },
+  {
+    "id": "science-paper",
+    "goal": "Recent science I asked to follow",
+    "sources": [
+      {
+        "title": "INSANE new paper just DROPPED and researchers are FURIOUS",
+        "text": "A Nature paper reported a room-temperature sensor with 12 millisecond latency in a 40-person lab trial. Drop a like if you agree. Going viral on the For You page.",
+        "url": "https://example.test/nature-sensor",
+        "outlet": "Lab Watch"
+      }
+    ],
+    "must_keep": ["nature", "12 millisecond", "40"],
+    "must_drop": ["insane", "furious", "dropped", "drop a like", "going viral", "for you page"]
+  }
+]

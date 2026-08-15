@@ -1,0 +1,15 @@
+{
+  "name": "microbait",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Goal-led briefings from public social posts and news, with ads and shockbait removed.",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node --test tests/*.test.js",
+    "eval": "./eval.sh"
+  },
+  "engines": {
+    "node": ">=20.11"
+  }
+}
