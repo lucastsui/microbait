@@ -25,5 +25,6 @@ test("RSS parser keeps news and drops ads", () => {
 });
 
 test("query terms drop short words", () => {
-  assert.equal(queryTerms("I want to know recent tech development"), "want know recent tech development");
+  assert.equal(queryTerms("I want to know recent tech development"), "");
+  assert.equal(queryTerms("OpenAI model release notes"), "openai model release notes");
 });

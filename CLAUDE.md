@@ -24,7 +24,9 @@ Stop condition: three consecutive cycles without improvement → write PLATEAU i
 State, stop looping, tell James.
 
 ## State
-Site runs locally at http://127.0.0.1:3847. Eval is green at 1.0000 on the frozen bait corpus (ceiling for this set). Next useful work is a harder corpus or live-source reliability, not inflating this number. Live Grok search needs XAI_API_KEY. Private friend graphs are not connected.
+Site runs locally at http://127.0.0.1:3847. Eval is green at 1.0000 on the frozen bait corpus (ceiling for this set). Live Grok search needs XAI_API_KEY. Private friend graphs are not connected. Public RSS/HN path is verified in the browser.
 
 ## Lessons
 - 2026-08-15: Started from a product idea, not a metric. Chose a frozen bait corpus so "calmer voice" can be scored without a live social login.
+- 2026-08-15: Searching HN with the raw goal sentence matched career threads. Generic tech goals should use the front page; keep only specific leftover terms for search.
+- 2026-08-15: Sentence splitting on every period cut "U.S. Ambassador" in half. Protect single-letter initials before splitting.

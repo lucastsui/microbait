@@ -54,6 +54,12 @@ test("goal classifier and handles", () => {
   ]);
 });
 
+test("does not split U.S. abbreviations", () => {
+  const out = neutralizeText("Canadian petition to expel U.S. Ambassador Pete Hoekstra gained 170000 signatures.");
+  assert.match(out.toLowerCase(), /u\.s\. ambassador/);
+  assert.match(out, /170000|170,000/);
+});
+
 test("demo briefing is structured", () => {
   const briefing = demoBriefing("I want to know recent tech development");
   const scored = scoreBriefing(corpus[0], briefing);

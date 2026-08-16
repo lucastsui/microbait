@@ -56,8 +56,16 @@ function renderBriefing(briefing, pending) {
       (item) => `
       <section class="item">
         <h3>${escapeHtml(item.headline)}</h3>
-        <p>${escapeHtml(item.summary)}</p>
-        ${item.relevance ? `<p class="rel">${escapeHtml(item.relevance)}</p>` : ""}
+        ${
+          item.summary && item.summary.replace(/[.]$/, "") !== item.headline
+            ? `<p>${escapeHtml(item.summary)}</p>`
+            : ""
+        }
+        ${
+          item.relevance && /^Related to:/.test(item.relevance)
+            ? `<p class="rel">${escapeHtml(item.relevance)}</p>`
+            : ""
+        }
         <div class="sources">
           ${(item.sources || [])
             .map(
