@@ -2,7 +2,7 @@
 
 ![Microbait briefing from an X home timeline](docs/intro.gif)
 
-Microbait helps jobseekers survive AI by identifying what skills are made obsolete becasue of AI, and what skills become more demanded as a result.
+Microbait helps jobseekers survive AI job-pocalyse by identifying what skills are made obsolete becasue of AI, and what skills become more demanded as a result.
 
 It works by reading what users on X brag about in thier latest tech demos and paper publication, and use AI to summarize:
 - what skils are being automated
