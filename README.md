@@ -1,30 +1,39 @@
 # Microbait
 
-A small website that reads the public internet on your behalf and hands back a briefing instead of a feed.
+![Microbait briefing from an X home timeline](docs/intro.gif)
 
-You write a goal such as "I want to know recent tech development" or "how are my friends doing." The desk gathers public posts and news, removes ads and shock language, and writes what remains in a flat voice.
+Microbait is a standalone Mac app. It reads your X home timeline in its own window and writes a briefing about which skills are getting cheaper and which ones companies still hire for. Each card is an event from someone you follow, the skill that just got automated, the new demand that remains, and live job ads as proof.
 
-## What is real today
+## What you get
 
-- A landing page and a briefing desk at `http://127.0.0.1:3847`
-- Saved goals on this machine
-- Public sources: Hacker News, RSS, and Reddit when they answer
-- A local stripper that drops ads, shout, emoji, and bait phrases
-- Optional live path: Grok on SpaceXAI with `web_search` and `x_search`
+- Connect X through Google Chrome so passkeys work, then keep the session on this machine.
+- Connect LinkedIn in the right-hand panel so job links open already signed in.
+- Brief with the local Grok CLI or the OpenCode API.
+- Cards only: **Event**, `[@handle]` summary, **Skill automated**, **New Demand**, then job postings.
+- Click an X post or a job ad and it slides in from the right. After a LinkedIn login, the drawer returns to the job you clicked.
 
-## What is not pretended
-
-Private friend graphs are closed. Facebook stories, locked Instagram, and DMs need those companies' logins. You can list public X usernames. Grok can search those when `XAI_API_KEY` is set.
+Secrets stay on your machine in gitignored `.env` and `~/.microbait/config.json`. Nothing in this repo is an API key or a login.
 
 ## Run
 
 ```bash
 cd ~/code/microbait
-cp .env.example .env   # optional, add XAI_API_KEY for live web + X
+npm install
 npm start
 ```
 
-Open [http://127.0.0.1:3847](http://127.0.0.1:3847).
+On first launch, open **Setup**:
+
+1. **Connect X** — Chrome opens to the X login. Sign in there.
+2. **Connect LinkedIn** — sign in in the right-hand panel.
+3. Pick **Grok CLI** or **OpenCode API**. For OpenCode, paste a key from [opencode.ai/auth](https://opencode.ai/auth).
+
+Then ask something like “Recent tech trends”.
+
+Optional overrides in a local `.env` (copy `.env.example`):
+
+- `GROK_BIN`, `GROK_MODEL`, `GROK_REASONING` for the Grok CLI
+- `OPENCODE_API_KEY`, `OPENCODE_URL`, `OPENCODE_MODEL` for OpenCode (default model is `big-pickle`)
 
 ## Eval
 
@@ -32,8 +41,14 @@ Open [http://127.0.0.1:3847](http://127.0.0.1:3847).
 ./eval.sh
 ```
 
-The last line is `METRIC=<float>`. Higher is a cleaner briefing on the frozen bait corpus.
+That runs the unit tests and a frozen bait-corpus metric. Higher is better.
 
-## Stack
+## End-to-end
 
-No npm dependencies. Node 20+, static pages, a small HTTP server, and `https://api.x.ai/v1/responses` when a key is present.
+`npm start` also opens a debug port on `127.0.0.1:9222`. With the app already signed in:
+
+```bash
+npm run test:e2e
+```
+
+That attaches to the Microbait window, clicks Ask, and prints the briefing.

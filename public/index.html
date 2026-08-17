@@ -3,8 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Microbait — a calm briefing from a loud internet</title>
-  <meta name="description" content="Write a goal. Microbait reads public social posts and news, removes ads and shockbait, and returns a short note in a flat voice.">
+  <title>Microbait</title>
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,81 +11,91 @@
   <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
-  <div class="wrap">
-    <header class="site-header">
-      <a class="brand" href="/">
-        <img class="mark" src="/favicon.svg" alt="">
-        <span class="word">Microbait</span>
-      </a>
-      <nav class="nav">
-        <a href="#how">How it works</a>
-        <a href="#limits">Limits</a>
-        <a href="/app">Open the desk</a>
-      </nav>
-    </header>
+  <header class="top">
+    <a class="brand" href="/">
+      <img class="mark" src="/favicon.svg" alt="">
+      <span class="word">Microbait</span>
+    </a>
+    <div class="top-right">
+      <label class="sr" for="ai-pick">AI</label>
+      <select class="ai-pick" id="ai-pick" hidden>
+        <option value="grok">Grok CLI</option>
+        <option value="opencode">OpenCode API</option>
+      </select>
+      <span class="who" id="who"></span>
+      <span class="who" id="li-who"></span>
+      <button class="text-btn" type="button" id="setup-again" hidden>Setup</button>
+      <button class="text-btn" type="button" id="disconnect-header" hidden>Disconnect</button>
+    </div>
+  </header>
 
-    <section class="hero">
-      <div>
-        <p class="kicker">A reading desk, not a feed</p>
-        <h1>The internet can talk. You do not have to hear the bait.</h1>
-        <p class="lede">Write what you actually want to know. Microbait looks through public posts and news, drops the ads and the shock, and hands back a short briefing in a neutral voice.</p>
-        <div class="actions">
-          <a class="btn" href="/app">Write a goal</a>
-          <a class="ghost" href="#how">See the method</a>
+  <main class="page" id="setup">
+    <div class="welcome">
+      <h1>Set up Microbait</h1>
+      <p>Sign in to X in Google Chrome and to LinkedIn here. Choose Grok CLI or the OpenCode API to write the briefing.</p>
+    </div>
+    <ol class="steps">
+      <li>
+        <strong>X</strong>
+        <p>Opens Google Chrome to x.com. Sign in there, including with a passkey. Microbait then keeps the session.</p>
+        <div class="btn-row">
+          <button class="btn" type="button" id="connect-x">Connect X</button>
+          <button class="btn ghost" type="button" id="disconnect-x" hidden>Disconnect</button>
         </div>
-      </div>
-      <article class="paper-card sample" aria-label="Sample briefing">
-        <header>
-          <span>Sample desk</span>
-          <span>Ads removed</span>
-        </header>
-        <h3>Apple described an M5 chip for a MacBook Pro refresh</h3>
-        <p>Independent tests posted 18 percent faster CPU scores than the M4. Promotional case offers and shock language were left out.</p>
-        <h3>A local election in Kenya reported 64 percent turnout</h3>
-        <p>Officials said results are expected Thursday. Outrage framing from recap posts was not carried over.</p>
-      </article>
-    </section>
+        <p class="hint" id="x-status"></p>
+      </li>
+      <li>
+        <strong>LinkedIn</strong>
+        <p>Sign in here so job ads in the report open already logged in. Uses the same session as the right-hand preview.</p>
+        <div class="btn-row">
+          <button class="btn" type="button" id="connect-linkedin">Connect LinkedIn</button>
+          <button class="btn ghost" type="button" id="disconnect-linkedin" hidden>Disconnect</button>
+        </div>
+        <p class="hint" id="linkedin-status"></p>
+      </li>
+      <li>
+        <strong>AI</strong>
+        <p>Grok CLI is the local <code>grok</code> command. OpenCode API uses a key from <a href="https://opencode.ai/auth">opencode.ai/auth</a>.</p>
+        <div class="btn-row">
+          <button class="btn" type="button" id="ai-grok">Grok CLI</button>
+          <button class="btn ghost" type="button" id="ai-opencode">OpenCode API</button>
+        </div>
+        <div id="opencode-fields" hidden>
+          <div class="key-row">
+            <label class="sr" for="opencode-key">OpenCode API key</label>
+            <input id="opencode-key" type="text" autocomplete="off" spellcheck="false" placeholder="OpenCode API key">
+            <button class="btn" type="button" id="save-opencode">Save</button>
+          </div>
+        </div>
+        <p class="hint" id="key-status"></p>
+      </li>
+    </ol>
+  </main>
 
-    <section class="section" id="how">
-      <h2>How a briefing is made</h2>
-      <div class="grid-3">
-        <article class="step">
-          <strong>1. You name a goal</strong>
-          <p>A sentence is enough. Recent tech. Whether named public people posted. What changed in a field you already follow.</p>
-        </article>
-        <article class="step">
-          <strong>2. The desk reads in public</strong>
-          <p>With a SpaceXAI key, Grok searches the web and X. Without one, Microbait still reads public RSS and Hacker News.</p>
-        </article>
-        <article class="step">
-          <strong>3. The voice is flattened</strong>
-          <p>Ads, codes, panic words, and like-counts are stripped. What remains is who, what, when, and where, plus the source.</p>
-        </article>
-      </div>
-    </section>
+  <main class="page" id="desk" hidden>
+    <div class="welcome" id="welcome">
+      <h1>What skills are obsolete?</h1>
+      <p>Search what jobs are replaced by AI, find the next thing that isn't, with job posting as proof.</p>
+    </div>
+    <div class="thread" id="thread" hidden></div>
+    <form class="chat" id="chat">
+      <label class="sr" for="goal">Ask Microbait</label>
+      <input id="goal" type="text" maxlength="240" required autocomplete="off" placeholder="Recent tech trends">
+      <button type="submit">Ask</button>
+    </form>
+  </main>
 
-    <section class="section" id="limits">
-      <h2>What this will not pretend to do</h2>
-      <div class="grid-3">
-        <article class="limit">
-          <strong>Private friends</strong>
-          <p>Facebook stories, locked Instagram, and DMs stay closed unless those companies later grant a login. Public X usernames can be listed today.</p>
-        </article>
-        <article class="limit">
-          <strong>No original feed</strong>
-          <p>You never see the timeline. That is the point. Promoted posts do not get a slot on the page.</p>
-        </article>
-        <article class="limit">
-          <strong>Not a siren</strong>
-          <p>There are no badges, streaks, or breaking bars. If nothing new matches the goal, the desk says so and stops.</p>
-        </article>
-      </div>
-    </section>
-
-    <footer class="site-footer">
-      <span>Microbait keeps the facts and leaves the bait.</span>
-      <a href="/app">Go to the briefing desk</a>
-    </footer>
+  <div class="veil" id="veil" hidden>
+    <p id="veil-msg">Working…</p>
   </div>
+  <div class="drawer-scrim" id="drawer-scrim"></div>
+  <aside class="drawer" id="drawer" aria-hidden="true">
+    <header class="drawer-bar">
+      <p class="drawer-title" id="drawer-title"></p>
+      <button class="text-btn" type="button" id="drawer-close">Close</button>
+    </header>
+    <div class="drawer-frame" id="drawer-frame"></div>
+  </aside>
+  <script type="module" src="/app.js"></script>
 </body>
 </html>

@@ -6,6 +6,7 @@ import test from "node:test";
 import { briefingFromSources, looksLikeAd, neutralizeText } from "../lib/neutralize.js";
 import { runCorpus, scoreBriefing } from "../lib/score.js";
 import { classifyGoal } from "../lib/sources.js";
+import { realHandle } from "../lib/config.js";
 import { cleanHandles, demoBriefing } from "../lib/digest.js";
 
 const ROOT = dirname(fileURLToPath(new URL(".", import.meta.url)));
@@ -52,6 +53,12 @@ test("goal classifier and handles", () => {
   assert.deepEqual(cleanHandles(["@Ada_Lovelace", "ada_lovelace", "bad handle!!"]), [
     "Ada_Lovelace",
   ]);
+});
+
+test("does not treat the site name X as a handle", () => {
+  assert.equal(realHandle("X"), "");
+  assert.equal(realHandle(null, "X"), "");
+  assert.equal(realHandle("Ada_Lovelace"), "Ada_Lovelace");
 });
 
 test("does not split U.S. abbreviations", () => {

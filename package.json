@@ -1,15 +1,22 @@
 {
   "name": "microbait",
-  "version": "0.1.0",
+  "version": "0.3.0",
   "private": true,
   "type": "module",
-  "description": "Goal-led briefings from public social posts and news, with ads and shockbait removed.",
+  "main": "electron/main.js",
+  "description": "Standalone app that briefs your X feed from Electron Chromium using Grok CLI or the OpenCode API.",
   "scripts": {
-    "start": "node server.js",
+    "start": "electron .",
+    "server": "node server.js",
     "test": "node --test tests/*.test.js",
+    "test:e2e": "node e2e/desk.mjs",
     "eval": "./eval.sh"
   },
   "engines": {
     "node": ">=20.11"
+  },
+  "devDependencies": {
+    "electron": "^37.2.6",
+    "playwright-core": "^1.55.0"
   }
 }
