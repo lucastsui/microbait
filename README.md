@@ -2,17 +2,15 @@
 
 ![Microbait briefing from an X home timeline](docs/intro.gif)
 
-Microbait is a standalone Mac app. It reads your X home timeline in its own window and writes a briefing about which skills are getting cheaper and which ones companies still hire for. Each card is an event from someone you follow, the skill that just got automated, the new demand that remains, and live job ads as proof.
+Microbait helps you survive AI by identifying what skills are made obsolete becasue of AI, and what skills become more demanded as a result.
 
-## What you get
+It works by reading what users on X brags about in thier latest tech demo and paper publication, and use AI to summarize:
+- what is being automated
+- what is the next bottleneck as a result
+- what job posts are hiring to solve that bottleneck.
 
-- Connect X through Google Chrome so passkeys work, then keep the session on this machine.
-- Connect LinkedIn in the right-hand panel so job links open already signed in.
-- Brief with the local Grok CLI or the OpenCode API.
-- Cards only: **Event**, `[@handle]` summary, **Skill automated**, **New Demand**, then job postings.
-- Click an X post or a job ad and it slides in from the right. After a LinkedIn login, the drawer returns to the job you clicked.
-
-Secrets stay on your machine in gitignored `.env` and `~/.microbait/config.json`. Nothing in this repo is an API key or a login.
+Now it runs on either Grok Build or OpenCode free API. I epxect users will be able to switch the underlying AI as they see fit.
+This app is published under MIT license.
 
 ## Run
 
