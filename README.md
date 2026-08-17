@@ -7,7 +7,7 @@ Microbait helps you survive AI by identifying what skills are made obsolete beca
 It works by reading what users on X brags about in thier latest tech demo and paper publication, and use AI to summarize:
 - what is being automated
 - what is the next bottleneck as a result
-- what job posts are hiring to solve that bottleneck.
+- what job posts are already there as a result of the change in demand.
 
 Now it runs on either Grok Build or OpenCode free API. I epxect users will be able to switch the underlying AI as they see fit.
 This app is published under MIT license.
