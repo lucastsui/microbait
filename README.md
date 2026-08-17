@@ -4,8 +4,8 @@
 
 Microbait helps jobseekers survive AI by identifying what skills are made obsolete becasue of AI, and what skills become more demanded as a result.
 
-It works by reading what users on X brags about in thier latest tech demo and paper publication, and use AI to summarize:
-- what is being automated
+It works by reading what users on X brag about in thier latest tech demos and paper publication, and use AI to summarize:
+- what skils are being automated
 - what is the next bottleneck as a result
 - what job posts are already there as a result of the change in demand.
 
